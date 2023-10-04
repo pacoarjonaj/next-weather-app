@@ -3,6 +3,7 @@ This is a Weather application built with [Next.js](https://nextjs.org/).
 ## Used versions
 1. [Node](https://nodejs.org/es) `19.7.0`
 2. [npm](https://www.npmjs.com/) `9.5.0`
+
 The versions of the packages and dependencies used are in the `package.json` file
 
 ## Getting Started

@@ -21,6 +21,7 @@ function createGradientBg(context) {
 	return gradient
 }
 
+
 function Forecast({weather}) {
 
 	const chartLabels = weather.map((item) => formatToLocalTime(item.dt))
@@ -66,7 +67,7 @@ function Forecast({weather}) {
 	}
 
 	return (
-		<div className="flex flex-col h-full p-4 rounded-md backdrop-blur-2xl bg-white/5">
+		<div className="flex flex-col h-full p-4 rounded-md backdrop-blur-md bg-white/5">
 			<div className="flex items-center justify-start">
 				<p className="font-medium text-white uppercase">24 hourly forecast</p>
 			</div>

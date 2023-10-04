@@ -1,12 +1,12 @@
 import {
-	UilArrowUp,
-	UilArrowDown,
+	UilTemperature,
 	UilTear,
 	UilWind,
 	UilSun,
 	UilSunset
 } from "@iconscout/react-unicons"
 import { formatToLocalTime } from "@/utils/functions"
+
 
 function TemperatureDetails({
 	sunrise,
@@ -29,7 +29,7 @@ function TemperatureDetails({
 				<span className="font-medium ml-1">{formatToLocalTime(sunset)} h</span>
 			</div>
 			<div className="flex items-center justify-center">
-				<UilArrowUp size={20} className="mr-1" />
+				<UilTemperature size={20} className="mr-1" />
 				Feels like:
 				<span className="font-medium ml-1">{Math.floor(feels_like)}º</span>
 			</div>

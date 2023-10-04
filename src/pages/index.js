@@ -13,7 +13,7 @@ import Spinner from "@/components/Spinner"
 export default function Home() {
 	const [screenMode, setScreenMode] = useState('light')
 	const { currentWeather, dailyWeather, loading, city, handleCityChange, handleSearch, handleLocation } = useWeather()
-	const { searchCount, showModal, incrementSearchCount, resetSearchCount } = useLimit()
+	const { showModal, incrementSearchCount, resetSearchCount } = useLimit()
 
 	const handleSubmit = (evt) => {
 		evt.preventDefault()

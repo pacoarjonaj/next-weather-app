@@ -11,3 +11,5 @@ export function formatToLocalTime(timestamp) {
 }
 
 export const indexes = [7, 15, 23, 31, 39]
+
+export const MAX_LIMIT = 5

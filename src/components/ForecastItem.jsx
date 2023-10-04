@@ -1,6 +1,7 @@
 import Icon from "./Icon"
 import { formatToLocalTime } from "@/utils/functions"
 
+
 function ForecastItem({
 	hour,
 	icon,

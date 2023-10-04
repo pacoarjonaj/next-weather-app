@@ -1,7 +1,6 @@
 import { useState } from 'react'
+import { MAX_LIMIT } from '@/utils/functions'
 
-
-const MAX_LIMIT = 5
 
 function useLimit() {
 	const [searchCount, setSearchCount] = useState(0)

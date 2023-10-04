@@ -10,4 +10,4 @@ export function formatToLocalTime(timestamp) {
 	return date.toLocaleTimeString('es-ES', options)
 }
 
-export const indexes = [7, 15, 23, 31, 38]
+export const indexes = [7, 15, 23, 31, 39]

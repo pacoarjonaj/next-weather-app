@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 const MAX_LIMIT = 5
 
-function useSearchLimit() {
+function useLimit() {
 	const [searchCount, setSearchCount] = useState(0)
 	const [showModal, setShowModal] = useState(false)
 
@@ -16,11 +16,10 @@ function useSearchLimit() {
 	}
 
 	const resetSearchCount = () => {
-		setSearchCount(0)
-		setShowModal(false)
+		window.location.reload()
 	}
 
 	return { searchCount, showModal, incrementSearchCount, resetSearchCount }
 }
 
-export default useSearchLimit
+export default useLimit

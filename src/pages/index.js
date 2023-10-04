@@ -1,19 +1,23 @@
 import { useState } from "react"
 import useWeather from "@/hooks/useWeather"
+import useLimit from "@/hooks/useLimit"
 import { UilBrightnessLow, UilLocationPoint, UilMoon, UilSearch } from "@iconscout/react-unicons"
 import Icon from "../components/Icon"
 import Forecast from "@/components/Forecast"
 import TemperatureDetails from "@/components/TemperatureDetails"
 import ForecastDaily from "@/components/ForecastDaily"
+import Modal from "@/components/Modal"
 import Spinner from "@/components/Spinner"
 
 
 export default function Home() {
 	const [screenMode, setScreenMode] = useState('light')
 	const { currentWeather, dailyWeather, loading, city, handleCityChange, handleSearch, handleLocation } = useWeather()
+	const { searchCount, showModal, incrementSearchCount, resetSearchCount } = useLimit()
 
 	const handleSubmit = (evt) => {
 		evt.preventDefault()
+		incrementSearchCount()
 		handleSearch()
 	}
 
@@ -75,7 +79,7 @@ export default function Home() {
 						</form>
 
 						{currentWeather.error && (
-							<span className="text-white">{currentWeather.error}</span>	
+							<span className="text-white">{currentWeather.error}</span>
 						)}
 					</div>
 
@@ -124,6 +128,9 @@ export default function Home() {
 				</>
 			)}
 
+			{showModal && (
+				<Modal resetSearchCount={resetSearchCount}/>
+			)}
 		</div>
 	)
 }

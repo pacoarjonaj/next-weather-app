@@ -7,9 +7,11 @@ export default function getDailyWeather({city}) {
 
 	return axios.get(apiURL).then((response) => {
 			return response.data
-		})
-		.catch((error) => {
-			console.log(error)
-			throw new Error(error)
+		}).catch((error) => {
+			if (error.response && error.response.status === 404) {
+				return { error: 'City not found' }
+			} else {
+				throw error
+			}
 		})
 }

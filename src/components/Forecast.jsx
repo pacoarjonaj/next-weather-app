@@ -11,18 +11,17 @@ ChartJS.register(
 	Filler
 )
 
+function createGradientBg(context) {
+	const ctx = context.chart.ctx
+	const gradient = ctx.createLinearGradient(0, 0, 0, 250)
+	
+	gradient.addColorStop(0, 'rgba(255, 165, 0, 0.5)')
+	gradient.addColorStop(1, 'rgba(173, 216, 230, 0.5)')
+	
+	return gradient
+}
 
 function Forecast({weather}) {
-
-	function createGradientBg(context) {
-		const ctx = context.chart.ctx
-		const gradient = ctx.createLinearGradient(0, 0, 0, 250)
-		
-		gradient.addColorStop(0, 'rgba(255, 165, 0, 0.5)')
-		gradient.addColorStop(1, 'rgba(173, 216, 230, 0.5)')
-		
-		return gradient
-	}
 
 	const chartLabels = weather.map((item) => formatToLocalTime(item.dt))
 	const chartData = weather.map((item) => item.main.temp)
@@ -67,7 +66,7 @@ function Forecast({weather}) {
 	}
 
 	return (
-		<div className="flex flex-col h-full p-4 rounded-md backdrop-blur-md bg-white/5">
+		<div className="flex flex-col h-full p-4 rounded-md backdrop-blur-2xl bg-white/5">
 			<div className="flex items-center justify-start">
 				<p className="font-medium text-white uppercase">24 hourly forecast</p>
 			</div>

@@ -1,5 +1,4 @@
 
-
 function Icon({ code }) {
 
 	return (

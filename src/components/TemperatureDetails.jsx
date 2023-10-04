@@ -17,7 +17,7 @@ function TemperatureDetails({
 }) {
 
 	return (
-		<div className="flex flex-col h-full space-y-8 justify-center p-2 items-center rounded-md backdrop-blur-md bg-white/5 text-white text-basem font-light">
+		<div className="flex flex-col h-full space-y-8 justify-center p-2 items-center rounded-md backdrop-blur-2xl bg-white/5 text-white text-basem font-light">
 			<div className="flex items-center justify-center">
 				<UilSun size={20} className="mr-1" />
 				Rise:
@@ -31,7 +31,7 @@ function TemperatureDetails({
 			<div className="flex items-center justify-center">
 				<UilArrowUp size={20} className="mr-1" />
 				Feels like:
-				<span className="font-medium ml-1">{feels_like}º</span>
+				<span className="font-medium ml-1">{Math.floor(feels_like)}º</span>
 			</div>
 			<div className="flex items-center justify-center">
 				<UilTear size={20} className="mr-1" />

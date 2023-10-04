@@ -36,55 +36,65 @@ export default function Home() {
 				<Spinner />
 			) : (
 				<>
-					<form
-						id="search-form"
-						className="w-auto max-w-screen-xl pt-4 px-2 bg-no-repeat bg-cover z-10 flex flex-row items-center justify-center space-x-4"
-						onSubmit={handleSubmit}
-					>
-						<input
-							className="w-full p-2 rounded-md text-xl font-light first-letter:capitalize shadow-lg focus:outline-none"
-							type="text"
-							placeholder="Search a city"
-							value={city}
-							onChange={(e) => handleCityChange(e.target.value)}
-						/>
-						<UilSearch
-							className="text-white cursor-pointer transition ease-out hover:scale-150"
-							size={28}
-							onClick={handleSubmit}
-						/>
-						<UilLocationPoint
-							className="text-white cursor-pointer transition ease-out hover:scale-150"
-							size={28}
-							onClick={handleLocation}
-						/>
-						{screenMode === 'light' ? (
-							<UilBrightnessLow
+					<div className="flex flex-col px-2">
+						<form
+							id="search-form"
+							className="w-auto max-w-screen-xl pt-4 bg-no-repeat bg-cover z-10 flex flex-row items-center justify-center space-x-4"
+							onSubmit={handleSubmit}
+						>
+							<input
+								className="w-full p-2 rounded-md text-xl font-light first-letter:capitalize shadow-lg focus:outline-none"
+								type="text"
+								placeholder="Search a city"
+								value={city}
+								onChange={(e) => handleCityChange(e.target.value)}
+							/>
+							<UilSearch
 								className="text-white cursor-pointer transition ease-out hover:scale-150"
 								size={28}
-								onClick={toggleScreenMode}
+								onClick={handleSubmit}
 							/>
-						) : (
-							<UilMoon
+							<UilLocationPoint
 								className="text-white cursor-pointer transition ease-out hover:scale-150"
 								size={28}
-								onClick={toggleScreenMode}
+								onClick={handleLocation}
 							/>
+							{screenMode === 'light' ? (
+								<UilBrightnessLow
+									className="text-white cursor-pointer transition ease-out hover:scale-150"
+									size={28}
+									onClick={toggleScreenMode}
+								/>
+							) : (
+								<UilMoon
+									className="text-white cursor-pointer transition ease-out hover:scale-150"
+									size={28}
+									onClick={toggleScreenMode}
+								/>
+							)}
+						</form>
+
+						{currentWeather.error && (
+							<span className="text-white">{currentWeather.error}</span>	
 						)}
-					</form>
+					</div>
 
 					<div className="w-full max-w-screen-xl p-4 bg-no-repeat bg-cover z-10">
 						{currentWeather && dailyWeather && dailyWeather.city && (
 							<div className="flex flex-col">
 								<div className="w-full flex flex-row items-center justify-between">
 									<div className="flex flex-col items-start">
-										<p className="text-white text-5xl sm:text-8xl font-semibold">{currentWeather.main.temp}º</p>
-										<p className=" md:hidden text-white text-lg sm:text-2xl font-normal">{currentWeather.name}</p>
+										<p className="text-white text-5xl sm:text-8xl font-semibold">{Math.floor(currentWeather.main.temp)}º</p>
+										<p className="md:hidden text-white text-lg sm:text-2xl font-normal">{currentWeather.name}</p>
+										<p className="md:hidden text-white text-xs font-normal capitalize">{currentWeather.weather[0].description}</p>
 									</div>
 									<div className="flex flex-row items-center justify-center">
-										<p className="hidden md:flex text-white text-lg sm:text-2xl font-normal">
-											{currentWeather.name}
-										</p>
+										<div className="hidden md:flex md:flex-col items-start">
+											<p className="text-white text-lg sm:text-2xl font-normal">
+												{currentWeather.name}
+											</p>
+											<p className=" text-white text-sm font-normal capitalize">{currentWeather.weather[0].description}</p>
+										</div>
 										<Icon className="w-20" code={currentWeather.weather[0].icon} />
 									</div>
 								</div>

@@ -13,17 +13,6 @@ export default function useWeather() {
 	const [latitude, setLatitude] = useState(null)
 	const [longitude, setLongitude] = useState(null)
 
-	const fetchLocation = async () => {
-		try {
-			console.log(latitude, longitude)
-			const locationData = await getGeolocation({ lat: latitude, lon: longitude })
-
-			console.log(locationData)
-		} catch (error) {
-			console.error('Error fetching weather data:', error)
-			setLoading(false)
-		}
-	}
 
 	const fetchWeather = async () => {
 		setLoading(true)
@@ -43,7 +32,7 @@ export default function useWeather() {
 			setDailyWeather(dailyData)
 			setLoading(false)
 		} catch (error) {
-			console.error('Error fetching weather data:', error)
+			console.log('Error fetching weather data:', error)
 			setLoading(false)
 		}
 	}
